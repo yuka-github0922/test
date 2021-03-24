@@ -4,10 +4,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux';//元々用意されている
-import {Provider} from 'redux';//特殊コンポーネント、作成したSTOREを全コーポネントに渡すため
+import {Provider} from 'react-redux';//特殊コンポーネント、作成したSTOREを全コーポネントに渡すため
 
 import './index.css';
-import reducer from ',./reducers'//前回作成したもの
+import reducer from './reducers'//前回作成したもの
 import App from './components/App';//見通ししやすいよにディレクトリをつくってここにいれておく
 import registerServiceWorker from './registerServiceWorker';
 
