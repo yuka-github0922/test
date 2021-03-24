@@ -1,36 +1,33 @@
-import React from 'react';
-
-// class App extends Component{
-//   render(){
-//     return <h1>Hello</h1>
-//   }
-// }
+import React, { Profiler } from 'react';
 
 const App = () =>{
-  return <div>meou!</div>
+  const profiles = [
+    {name: "Taro", age: 10},
+    {name: "Hanako", age: 5},
+    {name: "きれいなobasan"}
+  ]
+  return (
+    <div>
+      {
+        profiles.map((profile, index)=>{
+          return (
+            <User 
+            name = {profile.name}
+            age = {profile.age}
+            key = {index}//consoleでのwarningに対する処置
+            />
+          )
+        })
+      }
+    </div>
+  )
+}
+const User = (props) => {
+  return <div>Hi!myName is {props.name}私は{props.age}歳です</div>
+}
+User.defaultProps = {//defaultを入れることで、もし年齢がない場合もここに設定した値を入れることができる
+  age: 1
 }
 
 export default App;
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
