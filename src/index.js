@@ -3,21 +3,22 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';//元々用意されている
+import {createStore, applyMiddleware } from 'redux';//元々用意されている
 import {Provider} from 'react-redux';//特殊コンポーネント、作成したSTOREを全コーポネントに渡すため
+import thunk from 'redux-thunk'
 
 import './index.css';
 import reducer from './reducers'//前回作成したもの
-import App from './components/App';//見通ししやすいよにディレクトリをつくってここにいれておく
+import EventsIndex from './components/events_index';//見通ししやすいよにディレクトリをつくってここにいれておく
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(reducer)//アプリ内で唯一のもの　全てのstateはここに集約されている
+const store = createStore(reducer, applyMiddleware(thunk))//アプリ内で唯一のもの　全てのstateはここに集約されている
 
 //集約されているとリレー形式で渡す必要がなくなった
 //providerをつかってAPPコンポーネントをラップしてSTORE属性にSTOREをわたす。これだけでOK
 ReactDOM.render(
   <Provider store = {store}>
-    <App />
+    <EventsIndex />
   </Provider>,
   document.getElementById('root')
 );
